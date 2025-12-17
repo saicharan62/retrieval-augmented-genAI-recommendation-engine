@@ -1,6 +1,16 @@
+# Python
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
 .env
 .venv
 venv/
+
+# OS files
 .DS_Store
+
+# Model artifacts (generated locally if needed)
+*.log
