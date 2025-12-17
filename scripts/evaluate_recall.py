@@ -5,7 +5,6 @@ Evaluates Recall@10 for the SHL assessment recommender
 using self-supervised evaluation.
 """
 
-import pickle
 import pandas as pd
 from recommend import SHLRecommender
 
