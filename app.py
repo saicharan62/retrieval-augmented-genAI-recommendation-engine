@@ -13,7 +13,7 @@ st.write(
 
 # Cache the recommender so it loads only once
 @st.cache_resource
-def load_recommender():
+def load_recommender(_version="v2"):
     return SHLRecommender(top_k=10)
 
 recommender = load_recommender()
@@ -35,8 +35,8 @@ if st.button("Recommend"):
 
         for r in results:
             st.markdown(
-                f"- **{r['assessment_name']}**  \n"
-                f"  {r['assessment_url']}"
+                f"- **{r.get('assessment_name', r.get('name'))}**  \n"
+                f"  {r.get('assessment_url', r.get('url'))}"
             )
 
         # Optional: show raw JSON (good for reviewers)
