@@ -3,7 +3,7 @@ main.py
 
 FastAPI application for SHL Assessment Recommendation Engine
 """
-
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import List
@@ -16,6 +16,13 @@ app = FastAPI(
     title="SHL GenAI Assessment Recommender",
     description="Recommends relevant SHL individual assessments based on text query",
     version="1.0.0",
+)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # OK for assignment
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 # Load recommender ONCE at startup
