@@ -27,13 +27,13 @@ class RecommendRequest(BaseModel):
     query: str
 
 
-class Assessment(BaseModel):
-    name: str
-    url: str
+class AssessmentResponse(BaseModel):
+    assessment_name: str
+    assessment_url: str
 
 
 class RecommendResponse(BaseModel):
-    recommendations: List[Assessment]
+    recommendations: List[AssessmentResponse]
 
 
 # -------- Routes --------
@@ -47,6 +47,15 @@ def recommend(req: RecommendRequest):
     if not req.query.strip():
         raise HTTPException(status_code=400, detail="Query cannot be empty")
 
-    results = recommender.recommend(req.query)
+    raw_results = recommender.recommend(req.query)
 
-    return {"recommendations": results}
+    # 🔑 MAP INTERNAL FORMAT → SHL CONTRACT
+    formatted_results = [
+        {
+            "assessment_name": r["name"],
+            "assessment_url": r["url"],
+        }
+        for r in raw_results
+    ]
+
+    return {"recommendations": formatted_results}
