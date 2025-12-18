@@ -154,11 +154,13 @@ A minimal HTML frontend is provided under the `frontend/` directory for quick lo
 
 ```
 ├── app / main.py              # FastAPI application
+├── app.py                    # streamlit-code (used for web prototyping)
 ├── scripts/                  # Data prep, indexing, recommendation & evaluation scripts
 ├── models/                   # FAISS index and metadata
 ├── data/                     # Dataset and CSV predictions
-├── ui/                 # Minimal HTML frontend (optional)
+├── ui/                 # Minimal HTML frontend (locally tested)
 ├── requirements.txt
+├── Dockerfile
 └── README.md
 ```
 
