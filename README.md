@@ -1,4 +1,4 @@
-# SHL GenAI Assessment Recommendation Engine
+# Retrieval-Augmented GenAI Recommendation Engine
 
 Hi 👋
 
